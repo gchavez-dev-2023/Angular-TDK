@@ -1,0 +1,27 @@
+<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+  <div class="page-wrapper">
+    <app-breadcrumbs></app-breadcrumbs>
+
+    <!-- Rutas -->
+    <div class="row">
+      <div class="col-12">
+          <div class="card">
+              <div class="card-body">
+                <router-outlet></router-outlet>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer"> © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">wrappixel.com </a>
+    </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+  </div>
+</div>

@@ -1,3 +1,19 @@
+# Notas
+
+Version de Angular
+
+```
+Angular CLI: 15.1.3
+Node: 18.12.1
+Package Manager: npm 8.19.2
+OS: win32 x64
+
+Angular: 15.1.2
+... animations, common, compiler, compiler-cli, core, forms
+... platform-browser, platform-browser-dynamic, router   
+
+```
+
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
