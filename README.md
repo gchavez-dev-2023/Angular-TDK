@@ -14,6 +14,37 @@ Angular: 15.1.2
 
 ```
 
+## Instalar - FrontEnd-Angular
+
+### Levantar frontend en Angular
+
+Configurar un nuevo proyecto
+``` 
+ng new frontend
+```
+
+### Instalar bootswatch
+
+Utilizar bootswatch como tema
+``` 
+npm i bootswatch
+```
+
+### Configurar bootswatch
+
+Modificar el archivo angular.json
+
+Agregar lo siguiente en projects -> frontend -> architect -> build -> options -> styles
+``` 
+node_modules/bootswatch/dist/materia/bootstrap.min.css
+```
+
+### Iniciar App
+
+```
+ng serve -o
+```
+
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
