@@ -2,7 +2,11 @@
   <div style="width: 26rem;">
 
     <div class="tab-pane fade active show" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-      <form>
+      <form
+        id="loginform"
+        autocomplete="off"
+        [formGroup]="registerForm"
+        (ngSubmit)="crearUsuario()">
         <div class="text-center mb-3">
           <p>Sign up with:</p>
           <button type="button" class="btn btn-link btn-floating mx-1">
@@ -14,7 +18,7 @@
 
         <!-- Name input -->
         <div class="form-outline mb-4">
-          <input type="text" id="registerName" class="form-control">
+          <input type="text" id="registerName" class="form-control" formControlName="nombre">
           <label class="form-label" for="registerName" style="margin-left: 0px;">Name</label>
         <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 42.4px;"></div><div class="form-notch-trailing"></div></div></div>
 
