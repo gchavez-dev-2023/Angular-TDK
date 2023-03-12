@@ -2,11 +2,7 @@
   <div style="width: 26rem;">
 
     <div class="tab-pane fade active show" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-      <form
-        id="loginform"
-        autocomplete="off"
-        [formGroup]="registerForm"
-        (ngSubmit)="crearUsuario()">
+      <form id="registerForm" autocomplete="off" [formGroup]="registerForm" (ngSubmit)="crearUsuario()">
         <div class="text-center mb-3">
           <p>Sign up with:</p>
           <button type="button" class="btn btn-link btn-floating mx-1">
@@ -16,46 +12,99 @@
 
         <p class="text-center">or:</p>
 
-        <!-- Name input -->
+        <!-- Rut input -->
         <div class="form-outline mb-4">
-          <input type="text" id="registerName" class="form-control" formControlName="nombre">
-          <label class="form-label" for="registerName" style="margin-left: 0px;">Name</label>
-        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 42.4px;"></div><div class="form-notch-trailing"></div></div></div>
+          <input type="text" id="registerRut" class="form-control" formControlName="rut">
+          <label class="form-label" for="registerRut" style="margin-left: 0px;">Rut</label>
+          <div class="form-notch">
+            <div class="form-notch-leading" style="width: 9px;"></div>
+            <div class="form-notch-middle" style="width: 42.4px;"></div>
+            <div class="form-notch-trailing"></div>
+          </div>
+        </div>
 
-        <!-- Username input -->
+        <!-- Names input -->
         <div class="form-outline mb-4">
-          <input type="text" id="registerUsername" class="form-control">
-          <label class="form-label" for="registerUsername" style="margin-left: 0px;">Username</label>
-        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 66.4px;"></div><div class="form-notch-trailing"></div></div></div>
+          <input type="text" id="registerNames" class="form-control" formControlName="nombres">
+          <label class="form-label" for="registerNames" style="margin-left: 0px;">Nombres</label>
+          <div class="form-notch">
+            <div class="form-notch-leading" style="width: 9px;"></div>
+            <div class="form-notch-middle" style="width: 42.4px;"></div>
+            <div class="form-notch-trailing"></div>
+          </div>
+        </div>
+
+        <!-- Surnames input -->
+        <div class="form-outline mb-4">
+          <input type="text" id="registerSurnames" class="form-control" formControlName="apellidos">
+          <label class="form-label" for="registerSurnames" style="margin-left: 0px;">Apellidos</label>
+          <div class="form-notch">
+            <div class="form-notch-leading" style="width: 9px;"></div>
+            <div class="form-notch-middle" style="width: 66.4px;"></div>
+            <div class="form-notch-trailing"></div>
+          </div>
+        </div>
 
         <!-- Email input -->
         <div class="form-outline mb-4">
-          <input type="email" id="registerEmail" class="form-control">
+          <input type="email" id="registerEmail" class="form-control" formControlName="email">
           <label class="form-label" for="registerEmail" style="margin-left: 0px;">Email</label>
-        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 40px;"></div><div class="form-notch-trailing"></div></div></div>
+          <div class="form-notch">
+            <div class="form-notch-leading" style="width: 9px;"></div>
+            <div class="form-notch-middle" style="width: 40px;"></div>
+            <div class="form-notch-trailing"></div>
+          </div>
+        </div>
 
         <!-- Password input -->
         <div class="form-outline mb-4">
-          <input type="password" id="registerPassword" class="form-control">
+          <input type="password" id="registerPassword" class="form-control" formControlName="password">
           <label class="form-label" for="registerPassword" style="margin-left: 0px;">Password</label>
-        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64.8px;"></div><div class="form-notch-trailing"></div></div></div>
+          <div class="form-notch">
+            <div class="form-notch-leading" style="width: 9px;"></div>
+            <div class="form-notch-middle" style="width: 64.8px;"></div>
+            <div class="form-notch-trailing"></div>
+          </div>
+        </div>
 
         <!-- Repeat Password input -->
         <div class="form-outline mb-4">
-          <input type="password" id="registerRepeatPassword" class="form-control">
+          <input type="password" id="registerRepeatPassword" class="form-control" formControlName="password2">
           <label class="form-label" for="registerRepeatPassword" style="margin-left: 0px;">Repeat password</label>
-        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 106.4px;"></div><div class="form-notch-trailing"></div></div></div>
+          <div class="form-notch">
+            <div class="form-notch-leading" style="width: 9px;"></div>
+            <div class="form-notch-middle" style="width: 106.4px;"></div>
+            <div class="form-notch-trailing"></div>
+          </div>
+        </div>
 
         <!-- Checkbox -->
         <div class="form-check d-flex justify-content-center mb-4">
-          <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked="" aria-describedby="registerCheckHelpText">
+          <input class="form-check-input me-2" type="checkbox" id="registerCheck"
+            aria-describedby="registerCheckHelpText" formControlName="terminos">
           <label class="form-check-label" for="registerCheck">
             I have read and agree to the terms
           </label>
         </div>
 
+        <div class="row">
+          <div class="col text-danger">
+            <p *ngIf="campoNoValido('rut')">El rut es obligatorio.</p>
+            <p *ngIf="campoNoValido('nombres')">Los nombres son obligatorios.</p>
+            <p *ngIf="campoNoValido('apellidos')">Los apellidos son obligatorios.</p>
+            <p *ngIf="campoNoValido('email')">El email es obligatorio.</p>
+            <p *ngIf="passwordsNoValidas()">Ambas Contraseñas deben ser iguales.</p>
+            <p *ngIf="aceptaTerminos()">Debe aceptar los terminos y condiciones.</p>
+          </div>
+        </div>
         <!-- Submit button -->
         <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+
+
+        <!-- Sign up button -->
+        <div class="text-center">
+          <p>Do you have an account? <a routerLink="/login">Sign up</a></p>
+        </div>
       </form>
     </div>
 

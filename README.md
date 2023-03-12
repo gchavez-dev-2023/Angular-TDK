@@ -16,6 +16,15 @@ Angular: 15.1.2
 
 ## Instalar - FrontEnd-Angular
 
+Instalar NVM
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+```
+
+Instalar Angular Cli
+```
+npm install -g @angular/cli
+```
 ### Levantar frontend en Angular
 
 Configurar un nuevo proyecto
