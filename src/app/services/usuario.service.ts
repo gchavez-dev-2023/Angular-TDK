@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { LoginForm } from '../interfaces/login-form.interface';
 import { RegisterForm } from '../interfaces/register-form.interface';
-import { tap } from 'rxjs/operators'
+import { catchError, map, tap } from 'rxjs/operators'
+import { Observable, of } from 'rxjs';
 
+declare const google : any;
 
 const base_url = environment.base_url;
 
@@ -14,6 +16,30 @@ const base_url = environment.base_url;
 export class UsuarioService {
 
   constructor(private http: HttpClient) { }
+
+  logout(){
+    localStorage.removeItem('token');
+
+    google.accounts.id.revoke('correo', () => {
+
+    });
+  }
+
+  validarToken(): Observable<boolean>{
+    const token = localStorage.getItem('token') || '';
+
+    return this.http.get(`${base_url}/auth/renew`, {
+      headers: {
+        'x-token': token
+      }
+    }).pipe(
+      tap((resp: any) => {
+        localStorage.setItem('token', resp.token);
+      }),
+      map( resp =>  true),
+      catchError( error => of(false) )
+    );
+  }
 
   signup(formData: RegisterForm) {
     console.log('creando usuario');

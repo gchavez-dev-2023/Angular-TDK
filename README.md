@@ -10,33 +10,46 @@ OS: win32 x64
 
 Angular: 15.1.2
 ... animations, common, compiler, compiler-cli, core, forms
-... platform-browser, platform-browser-dynamic, router   
+... platform-browser, platform-browser-dynamic, router
 
 ```
 
 ## Instalar - FrontEnd-Angular
 
 Instalar NVM
+
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ```
 
 Instalar Angular Cli
+
 ```
 npm install -g @angular/cli
 ```
+
 ### Levantar frontend en Angular
 
 Configurar un nuevo proyecto
-``` 
+
+```
 ng new frontend
 ```
 
 ### Instalar bootswatch
 
 Utilizar bootswatch como tema
-``` 
+
+```
 npm i bootswatch
+```
+
+### Instalar sweet alert 2
+
+Utilizar bootswatch como tema
+
+```
+npm install sweetalert2
 ```
 
 ### Configurar bootswatch
@@ -44,7 +57,8 @@ npm i bootswatch
 Modificar el archivo angular.json
 
 Agregar lo siguiente en projects -> frontend -> architect -> build -> options -> styles
-``` 
+
+```
 node_modules/bootswatch/dist/materia/bootstrap.min.css
 ```
 
