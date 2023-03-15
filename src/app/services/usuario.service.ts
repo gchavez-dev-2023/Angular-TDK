@@ -5,8 +5,9 @@ import { LoginForm } from '../interfaces/login-form.interface';
 import { RegisterForm } from '../interfaces/register-form.interface';
 import { catchError, map, tap } from 'rxjs/operators'
 import { Observable, of } from 'rxjs';
+import { Usuario } from '../models/usuario.model';
 
-declare const google : any;
+declare const google: any;
 
 const base_url = environment.base_url;
 
@@ -14,10 +15,11 @@ const base_url = environment.base_url;
   providedIn: 'root'
 })
 export class UsuarioService {
+  public usuario: Usuario | undefined;
 
   constructor(private http: HttpClient) { }
 
-  logout(){
+  logout() {
     localStorage.removeItem('token');
 
     google.accounts.id.revoke('correo', () => {
@@ -25,7 +27,7 @@ export class UsuarioService {
     });
   }
 
-  validarToken(): Observable<boolean>{
+  validarToken(): Observable<boolean> {
     const token = localStorage.getItem('token') || '';
 
     return this.http.get(`${base_url}/auth/renew`, {
@@ -34,10 +36,27 @@ export class UsuarioService {
       }
     }).pipe(
       tap((resp: any) => {
+        const { email, nombres, apellidos, rut, roles, fechaNacimiento, telefono, img, nivel, categoria, subCategoria } = resp.usuario;
+
+        this.usuario = new Usuario(
+          email,
+          '',
+          rut,
+          nombres,
+          apellidos,
+          google,
+          roles,
+          fechaNacimiento,
+          telefono,
+          img,
+          nivel,
+          categoria,
+          subCategoria
+        );
         localStorage.setItem('token', resp.token);
       }),
-      map( resp =>  true),
-      catchError( error => of(false) )
+      map(resp => true),
+      catchError(error => of(false))
     );
   }
 
