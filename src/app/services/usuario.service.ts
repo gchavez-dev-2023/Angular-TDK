@@ -19,10 +19,10 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  logout() {
+  logout(correo : any) {
     localStorage.removeItem('token');
 
-    google.accounts.id.revoke('correo', () => {
+    google.accounts.id.revoke(correo, () => {
 
     });
   }

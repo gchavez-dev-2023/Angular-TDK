@@ -1,5 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -7,18 +8,26 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent {
- constructor( private router: Router,
-              private usuarioService: UsuarioService,
-              private ngZone: NgZone){
 
- }
+  public imgUrl;
+  public fullName;
+  public correo;
 
- logout(){
-  this.usuarioService.logout();
-  this.ngZone.run(() =>{
-    //Navegar al inicio
-    this.router.navigateByUrl('/login');
-  });
- }
+  constructor( private router: Router,
+                private usuarioService: UsuarioService,
+                private ngZone: NgZone){
+
+                  this.imgUrl = usuarioService.usuario?.imagenUrl;
+                  this.fullName = usuarioService.usuario?.nombreCompleto;
+                  this.correo = usuarioService.usuario?.email;
+  }
+
+  logout(){
+    this.usuarioService.logout(this.correo);
+    this.ngZone.run(() =>{
+      //Navegar al inicio
+      this.router.navigateByUrl('/login');
+    });
+  }
 
 }
