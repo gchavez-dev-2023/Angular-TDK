@@ -14,11 +14,11 @@ import { RouterModule } from '@angular/router';
   exports: [
     BreadcrumbsComponent,
     SidebarComponent,
-    HeaderComponent,
-    RouterModule
+    HeaderComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
   ]
 
 })

@@ -15,6 +15,7 @@ import { PerfilComponent } from './perfil/perfil.component';
   exports: [
     DashboardComponent,
     PagesComponent,
+    PerfilComponent,
   ],
   imports: [
     CommonModule,

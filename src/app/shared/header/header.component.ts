@@ -13,18 +13,18 @@ export class HeaderComponent {
   public fullName;
   public correo;
 
-  constructor( private router: Router,
-                private usuarioService: UsuarioService,
-                private ngZone: NgZone){
+  constructor(private router: Router,
+    private usuarioService: UsuarioService,
+    private ngZone: NgZone) {
 
-                  this.imgUrl = usuarioService.usuario?.imagenUrl;
-                  this.fullName = usuarioService.usuario?.nombreCompleto;
-                  this.correo = usuarioService.usuario?.email;
+    this.imgUrl = usuarioService.usuario?.imagenUrl;
+    this.fullName = usuarioService.usuario?.nombreCompleto;
+    this.correo = usuarioService.usuario?.email;
   }
 
-  logout(){
+  logout() {
     this.usuarioService.logout(this.correo);
-    this.ngZone.run(() =>{
+    this.ngZone.run(() => {
       //Navegar al inicio
       this.router.navigateByUrl('/login');
     });
