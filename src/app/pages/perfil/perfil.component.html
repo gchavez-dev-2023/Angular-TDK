@@ -1,1 +1,74 @@
-<p>perfil works!</p>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div clas="card-body">
+        <h4 class="card-title">Mi perfil de usuario</h4>
+        <h6 class="card-subtitle">Ajuste...</h6>
+
+        <!--form id="registerForm" autocomplete="off" [formGroup]="registerForm" (ngSubmit)="crearUsuario()" -->
+        <form class="form p-t-20">
+          <!-- Rut input -->
+          <div class="form-group">
+            <label for="registerRut">Rut</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-user"></i></div>
+              <input type="text" id="registerRut" class="form-control" formControlName="rut">
+            </div>
+          </div>
+
+          <!-- Names input -->
+          <div class="form-group">
+            <label for="registerNombres">Nombres</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-user"></i></div>
+              <input type="text" id="registerNombres" class="form-control" formControlName="nombres">
+            </div>
+          </div>
+
+          <!-- Surnames input -->
+          <div class="form-group">
+            <label for="registerApellidos">Apellidos</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-user"></i></div>
+              <input type="text" id="registerApellidos" class="form-control" formControlName="apellidos">
+            </div>
+          </div>
+
+          <!-- Email input -->
+          <div class="form-group">
+            <label for="registerEmail">Email</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-email"></i></div>
+              <input type="email" id="registerEmail" class="form-control" formControlName="email">
+            </div>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-group">
+            <label for="registerPassword">Password</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-lock"></i></div>
+              <input type="password" id="registerPassword" class="form-control" formControlName="password">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <!-- div class="col text-danger">
+              <p *ngIf="campoNoValido('rut')">El rut es obligatorio.</p>
+              <p *ngIf="campoNoValido('nombres')">Los nombres son obligatorios.</p>
+              <p *ngIf="campoNoValido('apellidos')">Los apellidos son obligatorios.</p>
+              <p *ngIf="campoNoValido('email')">El email es obligatorio.</p>
+              <p *ngIf="passwordsNoValidas()">Ambas Contraseñas deben ser iguales.</p>
+              <p *ngIf="aceptaTerminos()">Debe aceptar los terminos y condiciones.</p>
+            </div -->
+          </div>
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
